@@ -1,0 +1,110 @@
+import re
+from lib import *
+from random import *
+
+data = {
+    "who are teachers": "I simple say god",
+    "who are you": "I'm your friend you can ask me questions and i try to answer them byut may not know all of them but sure learn it with you",
+    "do you have a teacher": "No, but you can be my teacher by just teaching me what I dont know",
+    "who old are you": "I was born when you ran the my program",
+    "do you have frinds": "Yes its you!!!!!",
+    "can you eat": "No I only take data as my food",
+    "hi": "hi!!!!!!",
+    "thank you": "its ok...",
+    "why is teachers day celebrated": "The birth date of the second President of India, Sarvepalli Radhakrishnan, 5 September 1888, has been celebrated as Teacher's Day since 1962.",
+    "when is teachers day celebrated": "Globally, Teachers Day is celebrated on 5th October; in India, we celebrate it on 5th September from 1962 onwards.",
+    "who is the greatest teacher in india": "Your best teacher is your last mistake,” Kalam said.",
+    "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said",
+}
+tdata = {"": ""}
+great = [
+    "Thankyou",
+    "So nice of you",
+    "I appreciate for your help",
+    "thank you very much",
+    "I thank you from the bottom of my heart. Yes, I do have it",
+    "accept my endless gratitude",
+    "thanks a lot",
+]
+WCYD = [
+    "Answer few of your questions.",
+    "Roll a dice.",
+    "Toss a coin",
+    "Subtract number",
+    "Add numbers",
+    "find factorial",
+    "search some thing in wikipedia you an simply say search",
+    "give me some dumy text",
+]
+
+print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
+print("If you are enough having fun with me say 'stop'  ")
+
+
+while True:
+    s = input("tell me your question plz.. ").lower().strip()
+    i = re.sub("\s\s+", " ", s)
+    if i == "stop":
+        break
+
+    elif i == "help":
+        for li in WCYD:
+            print(li)
+
+    elif i == "find factorial":
+        f = int(input("which number factorial you need "))
+        print(fact(f))
+
+    elif i == "roll a dice":
+        roll_a_dice()
+
+    elif i == "subtract number":
+        t = input("do you want to add numbers say yes or no ").lower()
+        if t == "yes":
+            sub()
+    elif i == "toss a coin":
+        toss()
+
+    elif i == "add numbers":
+        t = input("do you want to add numbers say yes or no ").lower()
+        if t == "yes":
+            add()
+    elif i == "search":
+        search()
+    elif i == "give me some dumy text" or i == "dumy":
+        dumy()
+    elif data.get(i):
+        print(data.get(i))
+
+    else:
+
+        if tdata.get(i):
+            print("one of your friend or you said the answer is :")
+            print(tdata.get(i))
+            b = input("is it true?? type yes or no ").lower()
+
+            if b == "yes":
+                data[i] = tdata[i]
+                del tdata[i]
+            elif b == "no":
+                del tdata[i]
+            elif b != "no":
+                print(
+                    'sorry i dont under stand but next time make sure you you only type "yes" or "no" '
+                )
+
+            print(choice(great) + " for your answer")
+
+        else:
+            print(
+                "I dont know the answer can you help me!!, you can tell me the answer or say sorry"
+            )
+            a = input("help me with answer :")
+            if a != "sorry":
+                print(choice(great))
+                tdata[i] = a
+            else:
+                print("its ok")
+
+
+print(choice(great))
