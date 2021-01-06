@@ -26,43 +26,7 @@ help_options = [
 
 print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
 print("If you are enough having fun with me say 'stop'  ")
-
-def find_database_path():
-    relative_path = sys.argv[0]
-    letter_list = [x for x in relative_path]
-    slashindex = []
-    lix = ["\ "]   
-    for item in letter_list:
-        if item == lix[0][0]:
-            indexx = letter_list.index(lix[0][0])
-            slashindex.append(indexx)
-            letter_list[indexx] = "a"
-    return relative_path[0:slashindex[-1]]+"\database.json"
-def load_database():
-    path = find_database_path()
-    if os.path.exists(path):
-        with open(path, "r") as jsonFile:
-            data = json.load(jsonFile)
-        tdata = data["tdata"]
-        with open(path, "w") as jsonFile:
-            json.dump(data,jsonFile,indent=4)
-    else:
-        initial_data = {
-            "tdata":{}
-        }
-        with open(path, "w") as jsonFile:
-            json.dump(initial_data,jsonFile,indent=4)
-        with open(path, "r") as jsonFile:
-            data = json.load(jsonFile)
-        tdata = data["tdata"]
-        with open(path, "w") as jsonFile:
-            json.dump(data,jsonFile,indent=4)
-    return tdata
-def save_database(data):
-    path = find_database_path()
-    data1 = {"tdata":data}
-    with open(path, "w") as jsonFile:
-        json.dump(data1,jsonFile,indent=4)  
+  
 print("loading database")
 tdata = load_database()
 while True:
