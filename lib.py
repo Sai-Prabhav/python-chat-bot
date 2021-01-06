@@ -46,7 +46,7 @@ def square():
 
 def squareroot():  
     x=int(input("What number you want to find square root of:") ) 
-    print(math.sqrt( x ))
+    print(math.sqrt(x))
 
 def helpx():
     for item in help_options:
