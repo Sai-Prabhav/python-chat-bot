@@ -2,7 +2,11 @@ import requests
 from time import sleep
 from random import randint,choice
 from bs4 import BeautifulSoup
+import sys
+import os
+import json
 
+help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin", "Subtract number", "Add numbers" , "find factorial"]
 def find_database_path():
     relative_path = sys.argv[0]
     letter_list = [x for x in relative_path]
@@ -35,7 +39,9 @@ def load_database():
         with open(path, "w") as jsonFile:
             json.dump(data,jsonFile,indent=4)
     return tdata
-
+def helpx():
+    for item in help_options:
+        print(item)
 def save_database(data):
     path = find_database_path()
     data1 = {"tdata":data}
@@ -71,17 +77,21 @@ def roll_a_dice ():
     print(randint(1, 6))
 
 def sub():
-    n1 = int(input("give me first number"))
-    n2 = int(input("give me second number"))
-    print(n1-n2)
+    t = input("do you want to subtract numbers say yes or no ").lower()
+    if t == "yes":
+        n1 = int(input("give me first number"))
+        n2 = int(input("give me second number"))
+        print(n1-n2)
 
 def add():
-    n = int(input("who many numbers do you want add "))
-    y=0
-    for i in range(n):
-       x= int(input('your number'))
-       y+=x
-    print(y)
+    t = input("do you want to add numbers say yes or no ").lower()
+    if t == "yes":
+        n = int(input("who many numbers do you want add "))
+        y=0
+        for i in range(n):
+            x= int(input('your number'))
+            y+=x
+        print(y)
 
 
 def toss():
@@ -107,5 +117,4 @@ def dumytext():
         for i in range(numletters):
             cl=choice(x)
             WORD=WORD+cl
-
-        print(WORD, end=' ')
+    print(WORD, end=' ')

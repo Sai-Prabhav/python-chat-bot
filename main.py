@@ -17,12 +17,18 @@ data = {"who are teachers": "I simple say god",
         "who is the greatest teacher in india": "Your best teacher is your last mistake,” Kalam said.",
         "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said"
         }
-
+funcdict = {
+    "roll a dice":roll_a_dice,
+    "subtract number":sub,
+    "toss a coin":toss,
+    "add numbers":add,
+    "search":search,
+    "give me some dumy text":dumy,
+    "dumy":dumy,
+    "help":helpx,
+}
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
-help_options = [
-    "Answer few of your questions.", "Roll a dice.", "Toss a coin", "Subtract number", "Add numbers" , "find factorial"
-]
 
 print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
 print("If you are enough having fun with me say 'stop'  ")
@@ -32,31 +38,10 @@ tdata = load_database()
 while True:
     s = input("tell me your question plz.. ").lower().strip()
     i = re.sub("\s\s+", " ", s)
-    if i == "stop":
+    if i == "stop" or i == "s":
         break
-    elif i == "s":
-        break
-    elif i == "help":
-        for item in help_options :
-          print(item)
-    elif i == "roll a dice":
-        roll_a_dice()
-
-    elif i == "subtract number":
-        t = input("do you want to add numbers say yes or no ").lower()
-        if t == "yes":
-            sub()
-    elif i == "toss a coin":
-        toss()
-
-    elif i == "add numbers":
-        t = input("do you want to add numbers say yes or no ").lower()
-        if t == "yes":
-            add()
-    elif i == "search":
-        search()
-    elif i == "give me some dumy text" or i == "dumy":
-        dumy()
+    elif i in funcdict:
+        funcdict.get(i)()
     elif data.get(i):
         print(data.get(i))
     else:
