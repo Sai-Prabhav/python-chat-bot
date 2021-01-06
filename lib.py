@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import sys
 import os
 import json
+import math
 
 help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin", "Subtract number", "Add numbers" , "find factorial"]
 def find_database_path():
@@ -39,6 +40,14 @@ def load_database():
         with open(path, "w") as jsonFile:
             json.dump(data,jsonFile,indent=4)
     return tdata
+def square():  
+    n=int(input("What number you want to square:") )
+    print(n*n)
+
+def squareroot():  
+    x=int(input("What number you want to find square root of:") ) 
+    print(math.sqrt( x ))
+
 def helpx():
     for item in help_options:
         print(item)

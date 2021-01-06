@@ -26,6 +26,8 @@ funcdict = {
     "give me some dumy text":dumy,
     "dumy":dumy,
     "help":helpx,
+    "find square":square,
+    "find square root":squareroot
 }
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
