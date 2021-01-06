@@ -1,35 +1,33 @@
+import requests  
+from time import sleep
+from random import randint,choice
+from bs4 import BeautifulSoup
+
 def search ():
-        import requests
-        from bs4 import BeautifulSoup
-        name=input("what you want to search: ") 
-        URL="https://en.wikipedia.org/wiki/"+name
-        heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
+    name=input("what you want to search: ") 
+    URL="https://en.wikipedia.org/wiki/"+name
+    heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
 
-        page = requests.get(URL,heders)
-        soup= BeautifulSoup(page.content, 'html.parser')
+    page = requests.get(URL,heders)
+    soup= BeautifulSoup(page.content, 'html.parser')
 
-        title=soup.findAll("p")
-        print (title[2].text)
-        print (title[3].text)
-
-
+    title=soup.findAll("p")
+    print(title[2].text)
+    print(title[3].text)
 def fact(n):
     if n==0:
         return 1
     return n*fact(n-1)
-
 def roll_a_dice ():
-        from time import sleep
-        from random import randint
-        print("your number is ", end="", flush=True)
-        sleep(1)
-        print(".", end="", flush=True)
-        sleep(1)
-        print(".", end="",  flush=True)
-        sleep(1)
-        print(".", end="", flush=True)
-        sleep(1)
-        print(randint(1, 6))
+    print("your number is ", end="", flush=True)
+    sleep(1)
+    print(".", end="", flush=True)
+    sleep(1)
+    print(".", end="",  flush=True)
+    sleep(1)
+    print(".", end="", flush=True)
+    sleep(1)
+    print(randint(1, 6))
 def sub():
     n1 = int(input("give me first number"))
     n2 = int(input("give me second number"))
@@ -46,12 +44,9 @@ def add():
 
 
 def toss():
-    from random import choice
     print(choice(["Heads", "Tails"]))
 
 def dumy():
-    import requests 
-    from bs4 import BeautifulSoup
     numP=int(input("who many paras you want: ") )
     URL="https://www.lipsum.com/feed/html"
     heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
@@ -63,17 +58,14 @@ def dumy():
         print (title[i].text)
 
 def dumytext():     
-        
-        from random import choice, randint
+    numwords=int(input('num words you want'))
+    for i in range(numwords):
+            numletters=randint(2,6)
 
-        numwords=int(input('num words you want'))
-        for i in range(numwords):
-                numletters=randint(2,6)
+            x = ["q","w","e","r","t","y",'u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+            WORD=''
+            for i in range(numletters):
+                cl=choice(x)
+                WORD=WORD+cl
 
-                x = ["q","w","e","r","t","y",'u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
-                WORD=''
-                for i in range(numletters):
-                    cl=choice(x)
-                    WORD=WORD+cl
-
-                print(WORD, end=' ')
+            print(WORD, end=' ')
