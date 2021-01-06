@@ -75,7 +75,7 @@ while True:
     elif i == "help":
         for item in help_options :
           print(item)
-     elif i == "roll a dice":
+    elif i == "roll a dice":
         roll_a_dice()
 
     elif i == "subtract number":
