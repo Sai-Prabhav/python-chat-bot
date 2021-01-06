@@ -74,40 +74,24 @@ while True:
     elif i == "help":
         for item in help_options :
           print(item)
-    elif i == "find factorial":
-        f=int(input("which number factorial you need "))
-        if f :
-            x=1
-            for i in range(1,f+1):
-                x = x*i
-            print(x)
-    elif i == "roll a dice":
-        print("your number is ", end="", flush=True)
-        sleep(1)
-        print(".", end="", flush=True)
-        sleep(1)
-        print(".", end="",  flush=True)
-        sleep(1)
-        print(".", end="", flush=True)
-        sleep(1)
-        print(randint(1, 6))
+     elif i == "roll a dice":
+        roll_a_dice()
+
     elif i == "subtract number":
         t = input("do you want to add numbers say yes or no ").lower()
         if t == "yes":
-            n1 = int(input("dive me first number"))
-            n2 = int(input("dive me second number"))
-            print(n1-n2)
+            sub()
+    elif i == "toss a coin":
+        toss()
+
     elif i == "add numbers":
         t = input("do you want to add numbers say yes or no ").lower()
         if t == "yes":
-            n = int(input("who many numbers do you want add "))
-            nums = []
-            for i in range(n):
-                ni = int(input("number"+i))
-                nums.insert(i, ni)
-            print(sum(nums))
-    elif i == "toss a coin":
-        print(choice(["Heads", "Tails"]))
+            add()
+    elif i == "search":
+        search()
+    elif i == "give me some dumy text" or i == "dumy":
+        dumy()
     elif data.get(i):
         print(data.get(i))
     else:
