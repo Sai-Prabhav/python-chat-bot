@@ -40,7 +40,7 @@ while True:
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
-    elif i in funcdict:
+    elif funcdict.get(i):
         funcdict.get(i)()
     elif data.get(i):
         print(data.get(i))
