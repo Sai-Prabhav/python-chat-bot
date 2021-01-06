@@ -62,10 +62,8 @@ def search():
     name=input("what you want to search: ") 
     URL="https://en.wikipedia.org/wiki/"+name
     heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
-
     page = requests.get(URL,heders)
     soup= BeautifulSoup(page.content, 'html.parser')
-
     title=soup.findAll("p")
     print(title[2].text)
     print(title[3].text)
@@ -103,7 +101,6 @@ def add():
             y+=x
         print(y)
 
-
 def toss():
     print(choice(["Heads", "Tails"]))
 
@@ -113,11 +110,9 @@ def dumy():
     heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
     page = requests.get(URL,heders)
     soup= BeautifulSoup(page.content, 'html.parser')
-
     title=soup.findAll("p")
     for i in range(numP):
         print (title[i].text)
-
 def dumytext():     
     numwords=int(input('num words you want'))
     for i in range(numwords):
