@@ -51,7 +51,7 @@ def squareroot():
 def helpx():
     for item in help_options:
         print(item)
-        
+    
 def save_database(data):
     path = find_database_path()
     data1 = {"tdata":data}
