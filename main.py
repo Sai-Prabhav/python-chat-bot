@@ -3,6 +3,7 @@ import sys
 import os
 import json
 from lib import *
+from lib2 import *
 from random import *
 from time import *
 
@@ -27,7 +28,20 @@ funcdict = {
     "dumy":dumy,
     "help":helpx,
     "find square":square,
-    "find square root":squareroot
+    "find square root":squareroot,
+    "current time":date_time.time,
+    "current date":date_time.date,
+    "encrypt":cryptography.encrypt,
+    "decrypt":cryptography.decrypt,
+    "find common factors":math_functions.commonfactors,
+    "find factors":math_functions.factors,
+    "isprime":math_functions.isPrime,
+    "find highest common factor":math_functions.highestCommonFactor,
+    "find multiples":math_functions.multiples,
+    "find nearest perfect square":math_functions.NearestPerfectSquare,
+    "is perfect square":math_functions.IsPerfectSquare,
+    "find lowest common multiple":math_functions.LowestCommonMultiple,
+    "find lowest Form":math_functions.lowestForm
 }
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
