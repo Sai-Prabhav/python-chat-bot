@@ -127,3 +127,7 @@ def dumytext():
             cl=choice(x)
             WORD=WORD+cl
     print(WORD, end=' ')
+def sayhi():
+    hi= ["hi" , "hey" , "hello" , "hope you are good" , "how are you " , "how is your day" , "hi there","hello!" , "I'm good!" , "fine! how about you ?" , "hello friend" , "hope you are good too!"]
+    print(randon.choice(hi))
+   
