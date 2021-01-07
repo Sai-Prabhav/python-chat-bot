@@ -41,23 +41,25 @@ funcdict = {
     "find nearest perfect square":math_functions.NearestPerfectSquare,
     "is perfect square":math_functions.IsPerfectSquare,
     "find lowest common multiple":math_functions.LowestCommonMultiple,
-    "find lowest Form":math_functions.lowestForm
+    "find lowest Form":math_functions.lowestForm,
 }
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
 
 print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
 print("If you are enough having fun with me say 'stop'  ")
-
 print("loading database")
-mainlist=[funcdict,data]
 tdata = load_database()
+mainlist=[funcdict,data]
 while True:
     s = input("tell me your question plz.. ").lower().strip()
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
     status = False
+    if i == "test 123":
+        for key,values in funcdict.items():
+            values()
     for data in mainlist:
         if mainlist.index(data)==0:
             data.get(i)()
@@ -86,6 +88,13 @@ while True:
                 tdata[i] = a
             else:
                 print("its ok")
+review = input("how was your experience?:")
+path = find_database_path()
+with open(path,"r") as jsonFile:
+    data = json.load(jsonFile)
+data["user_review"].append(review)
+with open(path,"w") as jsonFile:
+    json.dump(data,jsonFile,indent=4)
 print("saving database")
 save_database(tdata)
 print(choice(great))

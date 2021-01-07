@@ -25,7 +25,6 @@ def find_database_path():
 
 def load_database():
     path = find_database_path()
-    print(path)
     if os.path.exists(path):
         with open(path, "r") as jsonFile:
             data = json.load(jsonFile)
@@ -34,7 +33,8 @@ def load_database():
             json.dump(data,jsonFile,indent=4)
     else:
         initial_data = {
-            "tdata":{}
+            "tdata":{},
+            "user_review":[]
         }
         with open(path, "w") as jsonFile:
             json.dump(initial_data,jsonFile,indent=4)
@@ -58,7 +58,9 @@ def helpx():
     
 def save_database(data):
     path = find_database_path()
-    data1 = {"tdata":data}
+    with open(path,"r") as jsonFile:
+        data1 = json.load(jsonFile)
+    data1["tdata"] = data
     with open(path, "w") as jsonFile:
         json.dump(data1,jsonFile,indent=4)
 
@@ -130,4 +132,4 @@ def dumytext():
 def sayhi():
     hi= ["hi" , "hey" , "hello" , "hope you are good" , "how are you " , "how is your day" , "hi there","hello!" , "I'm good!" , "fine! how about you ?" , "hello friend" , "hope you are good too!"]
     print(randon.choice(hi))
-   
+
