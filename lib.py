@@ -13,15 +13,19 @@ def find_database_path():
     letter_list = [x for x in relative_path]
     slashindex = []
     lix = ["\ "]   
-    for item in letter_list:
-        if item == lix[0][0]:
-            indexx = letter_list.index(lix[0][0])
-            slashindex.append(indexx)
-            letter_list[indexx] = "a"
-    return relative_path[0:slashindex[-1]]+"\database.json"
+    if lix[0][0] not in letter_list:
+        return "database.json"
+    else:
+        for item in letter_list:
+            if item == lix[0][0]:
+                indexx = letter_list.index(lix[0][0])
+                slashindex.append(indexx)
+                letter_list[indexx] = "a"
+        return relative_path[0:slashindex[-1]]+"\database.json"
 
 def load_database():
     path = find_database_path()
+    print(path)
     if os.path.exists(path):
         with open(path, "r") as jsonFile:
             data = json.load(jsonFile)
