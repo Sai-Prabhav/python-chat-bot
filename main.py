@@ -2,6 +2,8 @@ import re
 import sys
 import os
 import json
+from lib import *
+from lib2 import *
 from random import *
 from time import *
 
@@ -16,98 +18,46 @@ data = {"who are teachers": "I simple say god",
         "who is the greatest teacher in india": "Your best teacher is your last mistake,” Kalam said.",
         "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said"
         }
-
+funcdict = {
+    "roll a dice":roll_a_dice,
+    "subtract number":sub,
+    "toss a coin":toss,
+    "add numbers":add,
+    "search":search,
+    "give me some dumy text":dumy,
+    "dumy":dumy,
+    "help":helpx,
+    "find square":square,
+    "find square root":squareroot,
+    "current time":date_time.time,
+    "current date":date_time.date,
+    "encrypt":cryptography.encrypt,
+    "decrypt":cryptography.decrypt,
+    "find common factors":math_functions.commonfactors,
+    "find factors":math_functions.factors,
+    "isprime":math_functions.isPrime,
+    "find highest common factor":math_functions.highestCommonFactor,
+    "find multiples":math_functions.multiples,
+    "find nearest perfect square":math_functions.NearestPerfectSquare,
+    "is perfect square":math_functions.IsPerfectSquare,
+    "find lowest common multiple":math_functions.LowestCommonMultiple,
+    "find lowest Form":math_functions.lowestForm
+}
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
-help_options = [
-    "Answer few of your questions.", "Roll a dice.", "Toss a coin", "Subtract number", "Add numbers" , "find factorial"
-]
 
 print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
 print("If you are enough having fun with me say 'stop'  ")
-
-def find_database_path():
-    relative_path = sys.argv[0]
-    letter_list = [x for x in relative_path]
-    slashindex = []
-    lix = ["\ "]   
-    for item in letter_list:
-        if item == lix[0][0]:
-            indexx = letter_list.index(lix[0][0])
-            slashindex.append(indexx)
-            letter_list[indexx] = "a"
-    return relative_path[0:slashindex[-1]]+"\database.json"
-def load_database():
-    path = find_database_path()
-    if os.path.exists(path):
-        with open(path, "r") as jsonFile:
-            data = json.load(jsonFile)
-        tdata = data["tdata"]
-        with open(path, "w") as jsonFile:
-            json.dump(data,jsonFile,indent=4)
-    else:
-        initial_data = {
-            "tdata":{}
-        }
-        with open(path, "w") as jsonFile:
-            json.dump(initial_data,jsonFile,indent=4)
-        with open(path, "r") as jsonFile:
-            data = json.load(jsonFile)
-        tdata = data["tdata"]
-        with open(path, "w") as jsonFile:
-            json.dump(data,jsonFile,indent=4)
-    return tdata
-def save_database(data):
-    path = find_database_path()
-    data1 = {"tdata":data}
-    with open(path, "w") as jsonFile:
-        json.dump(data1,jsonFile,indent=4)  
+  
 print("loading database")
 tdata = load_database()
 while True:
     s = input("tell me your question plz.. ").lower().strip()
     i = re.sub("\s\s+", " ", s)
-    if i == "stop":
+    if i == "stop" or i == "s":
         break
-    elif i == "s":
-        break
-    elif i == "help":
-        for item in help_options :
-          print(item)
-    elif i == "find factorial":
-        f=int(input("which number factorial you need "))
-        if f :
-            x=1
-            for i in range(1,f+1):
-                x = x*i
-            print(x)
-    elif i == "roll a dice":
-        print("your number is ", end="", flush=True)
-        sleep(1)
-        print(".", end="", flush=True)
-        sleep(1)
-        print(".", end="",  flush=True)
-        sleep(1)
-        print(".", end="", flush=True)
-        sleep(1)
-        print(randint(1, 6))
-    elif i == "subtract number":
-        t = input("do you want to add numbers say yes or no ").lower()
-        if t == "yes":
-            n1 = int(input("dive me first number"))
-            n2 = int(input("dive me second number"))
-            print(n1-n2)
-    elif i == "add numbers":
-        t = input("do you want to add numbers say yes or no ").lower()
-        if t == "yes":
-            n = int(input("who many numbers do you want add "))
-            nums = []
-            for i in range(n):
-                ni = int(input("number"+i))
-                nums.insert(i, ni)
-            print(sum(nums))
-    elif i == "toss a coin":
-        print(choice(["Heads", "Tails"]))
+    elif funcdict.get(i):
+        funcdict.get(i)()
     elif data.get(i):
         print(data.get(i))
     else:
