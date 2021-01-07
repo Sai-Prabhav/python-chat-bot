@@ -29,7 +29,7 @@ class date_time:
             current_hours -= 12
         elif int(hours) == 0:
             current_hours += 12
-        return str(current_hours)+":"+str(minutes)+":"+str(seconds)+" "+mode
+        print(str(current_hours)+":"+str(minutes)+":"+str(seconds)+" "+mode)
     def date():
         today = datetime.today()
         date = today.strftime("%d")
@@ -56,7 +56,7 @@ class date_time:
         month_conv = {"01":"January","02":"February","03":"March","04":"April","05":"May","06":"June","07":"July","08":"August","09":"September","10":"October","11":"November","12":"December"}
         month_d = month_conv.get(month)
         year_d = "20"+str(year)
-        return date+date_m+" "+month_d+" "+year_d
+        print(date+date_m+" "+month_d+" "+year_d)
 class cryptography:
     def encrypt():
         string = input("enter string to be encrypted:")
