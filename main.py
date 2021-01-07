@@ -50,24 +50,22 @@ print("Hi, I'm your friend you can ask me questions but not sure I can answer al
 print("If you are enough having fun with me say 'stop'  ")
   
 print("loading database")
-list=[funcdict,data]
+list1=[funcdict,data]
 tdata = load_database()
 while True:
     s = input("tell me your question plz.. ").lower().strip()
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
-#     elif funcdict.get(i):
-#         funcdict.get(i)()
-#     elif data.get(i):
-#         print(data.get(i))
-
-    for dat in list:
-              if list.index(dat)==0:
-                dat.get(i)()
-              elif dat.get(i):
-                print(dat.get(i))
-    else:
+    status = False
+    for data in list1:
+        if list1.index(data)==0:
+            data.get(i)()
+            status = True
+        elif data.get(i):
+            print(data.get(i))
+            status = True
+    if status == False:
         if tdata.get(i):
             print("one of your friend or you said the answer is :")
             print(tdata.get(i))
