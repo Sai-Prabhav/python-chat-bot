@@ -64,7 +64,7 @@ while True:
         if mainlist.index(data)==0:
             if data.get(i):
                 data.get(i)()
-            status = True
+                status = True
         elif data.get(i):
             print(data.get(i))
             status = True
