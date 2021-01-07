@@ -48,9 +48,9 @@ great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you 
 
 print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
 print("If you are enough having fun with me say 'stop'  ")
-  
+
 print("loading database")
-list1=[funcdict,data]
+mainlist=[funcdict,data]
 tdata = load_database()
 while True:
     s = input("tell me your question plz.. ").lower().strip()
@@ -58,8 +58,8 @@ while True:
     if i == "stop" or i == "s":
         break
     status = False
-    for data in list1:
-        if list1.index(data)==0:
+    for data in mainlist:
+        if mainlist.index(data)==0:
             data.get(i)()
             status = True
         elif data.get(i):
