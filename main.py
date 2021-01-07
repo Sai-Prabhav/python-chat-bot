@@ -62,7 +62,8 @@ while True:
             values()
     for data in mainlist:
         if mainlist.index(data)==0:
-            data.get(i)()
+            if data.get(i):
+                data.get(i)()
             status = True
         elif data.get(i):
             print(data.get(i))
