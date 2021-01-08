@@ -153,7 +153,7 @@ def riddle():
        em=em.text    
        if em[6]==':':
          answers.append(em)
-  ran=random.choice(range(len(answers)))
+  ran=choice(range(len(answers)))
   print(questions[ran][2:])
   print(answers[ran][7:])
 
