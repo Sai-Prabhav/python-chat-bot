@@ -46,10 +46,12 @@ def load_database():
     return tdata
 def square():  
     n=int(input("What number you want to square:") )
+    if n=='':n='0'
     print(n*n)
 
 def squareroot():  
     x=int(input("What number you want to find square root of:") ) 
+    if x=='':x='0'
     print(math.sqrt(x))
 
 def helpx():
@@ -66,6 +68,7 @@ def save_database(data):
 
 def search():
     name=input("what you want to search: ") 
+    if name=='':name='0'
     URL="https://en.wikipedia.org/wiki/"+name
     heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
     page = requests.get(URL,heders)
@@ -91,15 +94,13 @@ def roll_a_dice ():
     print(randint(1, 6))
 
 def sub():
-    t = input("do you want to subtract numbers say yes or no ").lower()
-    if t == "yes":
+    
         n1 = int(input("give me first number"))
         n2 = int(input("give me second number"))
         print(n1-n2)
 
 def add():
-    t = input("do you want to add numbers say yes or no ").lower()
-    if t == "yes":
+    
         n = int(input("who many numbers do you want add "))
         y=0
         for i in range(n):
@@ -107,7 +108,6 @@ def add():
             y+=x
         print(y)
 
-def toss():
     print(choice(["Heads", "Tails"]))
 
 def dumy():
@@ -147,8 +147,8 @@ def riddle():
         e=diva.findAll("p")
         for pa in q:
             pa=pa.text
-            if pa[1]=='.' or pa[2]=='.':
-                questions.append(pa)
+            if pa[1]=='.'   or pa[2]=='.':
+                 questions.append(pa)
         for em in e:
             em=em.text    
             if em[6]==':':
