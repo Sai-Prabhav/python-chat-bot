@@ -57,7 +57,9 @@ while True:
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
-    if i== '':i='0'
+    if i== '':
+        print("you didnt enter anything")
+        continue
     status = False
     if i == "test 123":
         for key,values in funcdict.items():
