@@ -19,6 +19,7 @@ data = {"who are teachers": "I simple say god",
         "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said"
         }
 funcdict = {
+    "find lowest common multiple":math_functions.LowestCommonMultiple,
     "roll a dice":roll_a_dice,
     "subtract number":sub,
     "toss a coin":toss,
@@ -40,7 +41,6 @@ funcdict = {
     "find multiples":math_functions.multiples,
     "find nearest perfect square":math_functions.NearestPerfectSquare,
     "is perfect square":math_functions.IsPerfectSquare,
-    "find lowest common multiple":math_functions.LowestCommonMultiple,
     "find lowest Form":math_functions.lowestForm,
     "riddle":riddle
 }
@@ -57,9 +57,11 @@ while True:
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
+    if i== '':i='0'
     status = False
     if i == "test 123":
         for key,values in funcdict.items():
+            print(key)
             values()
     for data in mainlist:
         if mainlist.index(data)==0:
