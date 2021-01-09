@@ -98,15 +98,15 @@ def roll_a_dice ():
     print(randint(1, 6))
 
 def sub():
-    n1 = int(input("give me first number"))
-    n2 = int(input("give me second number"))
+    n1 = int(input("give me first number: "))
+    n2 = int(input("give me second number: "))
     print(n1-n2)
 
 def add():    
-    n = int(input("who many numbers do you want add "))
+    n = int(input("who many numbers do you want add: "))
     y=0
     for i in range(n):
-        x= int(input('your number'))
+        x= int(input('your number:'))
         y+=x
     print(y)
 def toss():
@@ -122,7 +122,7 @@ def dumy():
     for i in range(numP):
         print (title[i].text)
 def dumytext():     
-    numwords=int(input('num words you want'))
+    numwords=int(input('num words you want:'))
     for i in range(numwords):
         numletters=randint(2,6)
         x = ["q","w","e","r","t","y",'u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
@@ -149,7 +149,7 @@ def riddle():
         e=diva.findAll("p")
         for pa in q:
             pa=pa.text
-            if pa[1]=='.'   or pa[2]=='.':
+            if pa[1]=='.' or pa[2]=='.':
                  questions.append(pa)
         for em in e:
             em=em.text    
