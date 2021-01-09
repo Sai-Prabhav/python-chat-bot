@@ -46,12 +46,14 @@ def load_database():
     return tdata
 def square():  
     n=int(input("What number you want to square:") )
-    if n=='':n='0'
+    if n=='':
+        n=0
     print(n*n)
 
 def squareroot():  
     x=int(input("What number you want to find square root of:") ) 
-    if x=='':x='0'
+    if x=='':
+        x=0
     print(math.sqrt(x))
 
 def helpx():
@@ -68,14 +70,16 @@ def save_database(data):
 
 def search():
     name=input("what you want to search: ") 
-    if name=='':name='0'
-    URL="https://en.wikipedia.org/wiki/"+name
-    heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
-    page = requests.get(URL,heders)
-    soup= BeautifulSoup(page.content, 'html.parser')
-    title=soup.findAll("p")
-    print(title[2].text)
-    print(title[3].text)
+    if name=='':
+        print("you didnt enter anything..")
+    else:
+        URL="https://en.wikipedia.org/wiki/"+name
+        heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
+        page = requests.get(URL,heders)
+        soup= BeautifulSoup(page.content, 'html.parser')
+        title=soup.findAll("p")
+        print(title[2].text)
+        print(title[3].text)
 
 def fact(n):
     if n==0:
@@ -94,20 +98,18 @@ def roll_a_dice ():
     print(randint(1, 6))
 
 def sub():
-    
-        n1 = int(input("give me first number"))
-        n2 = int(input("give me second number"))
-        print(n1-n2)
+    n1 = int(input("give me first number"))
+    n2 = int(input("give me second number"))
+    print(n1-n2)
 
-def add():
-    
-        n = int(input("who many numbers do you want add "))
-        y=0
-        for i in range(n):
-            x= int(input('your number'))
-            y+=x
-        print(y)
-
+def add():    
+    n = int(input("who many numbers do you want add "))
+    y=0
+    for i in range(n):
+        x= int(input('your number'))
+        y+=x
+    print(y)
+def toss():
     print(choice(["Heads", "Tails"]))
 
 def dumy():
@@ -124,11 +126,11 @@ def dumytext():
     for i in range(numwords):
         numletters=randint(2,6)
         x = ["q","w","e","r","t","y",'u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
-        WORD=''
+        word=''
         for i in range(numletters):
             cl=choice(x)
-            WORD=WORD+cl
-    print(WORD, end=' ')
+            word=word+cl
+    print(word, end=' ')
 def sayhi():
     hi= ["hi" , "hey" , "hello" , "hope you are good" , "how are you " , "how is your day" , "hi there","hello!" , "I'm good!" , "fine! how about you ?" , "hello friend" , "hope you are good too!"]
     print(randon.choice(hi))

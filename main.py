@@ -19,7 +19,6 @@ data = {"who are teachers": "I simple say god",
         "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said"
         }
 funcdict = {
-    "find lowest common multiple":math_functions.LowestCommonMultiple,
     "roll a dice":roll_a_dice,
     "subtract number":sub,
     "toss a coin":toss,
@@ -37,6 +36,7 @@ funcdict = {
     "find common factors":math_functions.commonfactors,
     "find factors":math_functions.factors,
     "isprime":math_functions.isPrime,
+    "find lowest common multiple":math_functions.LowestCommonMultiple,
     "find highest common factor":math_functions.highestCommonFactor,
     "find multiples":math_functions.multiples,
     "find nearest perfect square":math_functions.NearestPerfectSquare,
