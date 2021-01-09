@@ -42,6 +42,7 @@ funcdict = {
     "is perfect square":math_functions.IsPerfectSquare,
     "find lowest common multiple":math_functions.LowestCommonMultiple,
     "find lowest Form":math_functions.lowestForm,
+    "riddle":riddle
 }
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]

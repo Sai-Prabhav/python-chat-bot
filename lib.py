@@ -134,26 +134,26 @@ def sayhi():
     print(randon.choice(hi))
     
 def riddle(): 
-  URL="https://www.prodigygame.com/main-en/blog/riddles-for-kids/"
-  heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
-  page = requests.get(URL,heders)
-  soup= BeautifulSoup(page.content, 'html.parser')
-  div=soup.find_all('div')
-  divindex=[]
-  questions=[]
-  answers=[]
-  for diva in div[35:]:
-     q=diva.findAll("strong")
-     e=diva.findAll("p")
-     for pa in q:
-       pa=pa.text
-       if pa[1]=='.' or pa[2]=='.':
-         questions.append(pa)
-     for em in e:
-       em=em.text    
-       if em[6]==':':
-         answers.append(em)
-  ran=choice(range(len(answers)))
-  print(questions[ran][2:])
-  print(answers[ran][7:])
+    URL="https://www.prodigygame.com/main-en/blog/riddles-for-kids/"
+    heders = { "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
+    page = requests.get(URL,heders)
+    soup= BeautifulSoup(page.content, 'html.parser')
+    div=soup.find_all('div')
+    divindex=[]
+    questions=[]
+    answers=[]
+    for diva in div[35:]:
+        q=diva.findAll("strong")
+        e=diva.findAll("p")
+        for pa in q:
+            pa=pa.text
+            if pa[1]=='.' or pa[2]=='.':
+                questions.append(pa)
+        for em in e:
+            em=em.text    
+            if em[6]==':':
+                answers.append(em)
+    ran=choice(range(len(answers)))
+    print(questions[ran][2:])
+    print(answers[ran][7:])
 
