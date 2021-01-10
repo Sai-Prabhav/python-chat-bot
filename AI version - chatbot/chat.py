@@ -4,7 +4,7 @@ import json
 import torch
 
 from model import NeuralNet
-from nltk_utils import bag_of_words, tokenize
+from nltk_utils import bag, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -34,7 +34,7 @@ while True:
         break
 
     sentence = tokenize(sentence)
-    X = bag_of_words(sentence, all_words)
+    X = bag(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
 
