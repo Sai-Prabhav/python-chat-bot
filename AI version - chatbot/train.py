@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-from nltk_utils import bag_of_words, tokenize, stem
+from nltk_utils import bag, tokenize, stem
 from model import NeuralNet
 
 with open('intents.json', 'r') as f:
@@ -44,7 +44,7 @@ X_train = []
 y_train = []
 for (pattern_sentence, tag) in xy:
     # X: bag of words for each pattern_sentence
-    bag = bag_of_words(pattern_sentence, all_words)
+    bag = bag(pattern_sentence, all_words)
     X_train.append(bag)
     # y: PyTorch CrossEntropyLoss needs only class labels, not one-hot
     label = tags.index(tag)
