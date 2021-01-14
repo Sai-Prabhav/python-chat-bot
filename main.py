@@ -21,6 +21,7 @@ data = {"who are teachers": "I simple say god",
 funcdict = {
     "find lowest common multiple":math_functions.LowestCommonMultiple,
     "roll a dice":roll_a_dice,
+    "open file":open_file,
     "subtract number":sub,
     "toss a coin":toss,
     "add numbers":add,
