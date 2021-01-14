@@ -1,11 +1,11 @@
 import random
 import json
-# import wikipidia
+import wikipidia
 import torch
 
 from model import NeuralNet
 from nltk_utils import bag, tokenize
-
+global query
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 with open('intents.json', 'r') as json_data:
@@ -24,7 +24,7 @@ model_state = data["model_state"]
 model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
-
+b = "tell me about "
 bot_name = "Sam"
 print("Let's chat! (type 'quit' to exit)")
 while True:
@@ -32,6 +32,9 @@ while True:
     sentence = input("You: ")
     if sentence == "quit":
         break
+    elif sentence == b+query:
+        print(wikipidia.summary(query,sentence=10))
+        pass
 
     sentence = tokenize(sentence)
     X = bag(sentence, all_words)
