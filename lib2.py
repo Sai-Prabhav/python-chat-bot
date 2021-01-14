@@ -340,7 +340,7 @@ class math_functions:
         number2 = int(input("enter second number:"))
         number1 = int(number1)
         number2 = int(number2)
-        if number1 > number2:
+        if number1 >= number2:
             big_num = number1
             small_num = number2
         elif number2 > number1:
