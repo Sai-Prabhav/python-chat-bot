@@ -61,7 +61,7 @@ while True:
         print("you didnt enter anything")
         continue
     status = False
-    if i == "test 123":
+    if i == "test":
         for key, values in funcdict.items():
             print(key)
             values()

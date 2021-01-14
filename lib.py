@@ -14,7 +14,7 @@ help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin",
 def tell(a):
     r = sr.Recognizer()
     with sr.Microphone() as scro:
-        sleep(0.5)
+        sleep(0.2)
         print(f'bot: {a}')
         adio = r.listen(scro)
         ans = r.recognize_google(adio)
@@ -62,14 +62,14 @@ def load_database():
 
 
 def square():
-    n = int(input("What number you want to square:"))
+    n = int(tell("What number you want to square:"))
     if n == '':
         n = 0
     print(n*n)
 
 
 def squareroot():
-    x = int(input("What number you want to find square root of:"))
+    x = int(tell("What number you want to find square root of:"))
     if x == '':
         x = 0
     print(math.sqrt(x))
@@ -90,7 +90,7 @@ def save_database(data):
 
 
 def search():
-    name = input("what you want to search: ")
+    name = tell("what you want to search: ")
     if name == '':
         print("you didnt enter anything..")
     else:
@@ -123,16 +123,16 @@ def roll_a_dice():
 
 
 def sub():
-    n1 = int(input("give me first number: "))
-    n2 = int(input("give me second number: "))
+    n1 = int(tell("give me first number: "))
+    n2 = int(tell("give me second number: "))
     print(n1-n2)
 
 
 def add():
-    n = int(input("who many numbers do you want add: "))
+    n = int(tell("who many numbers do you want add: "))
     y = 0
     for i in range(n):
-        x = int(input('your number:'))
+        x = int(tell('your number:'))
         y += x
     print(y)
 
@@ -142,7 +142,7 @@ def toss():
 
 
 def dumy():
-    numP = int(input("who many paras you want: "))
+    numP = int(tell("who many paras you want: "))
     URL = "https://www.lipsum.com/feed/html"
     heders = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
@@ -154,7 +154,7 @@ def dumy():
 
 
 def dumytext():
-    numwords = int(input('num words you want:'))
+    numwords = int(tell('num words you want:'))
     for i in range(numwords):
         numletters = randint(2, 6)
         x = ["q", "w", "e", "r", "t", "y", 'u', 'i', 'o', 'p', 'a', 's', 'd',
@@ -203,14 +203,14 @@ def open_file():
     print('You can save file loction so thay you can open it later or open the saved files. Say "go back" to leav')
     run = True
     while run:
-        s = input(
+        s = tell(
             'What you want to do?? You can say file name of what you want to open or tell "save" to save the file location: ')
         i = re.sub("\s\s+", " ", s)
         if i == 'go back':
             run = False
         if i == 'save':
-            x = input('what is the path of exe file: ')
-            y = input('what is the name of the application: ')
+            x = tell('what is the path of exe file: ')
+            y = tell('what is the name of the application: ')
             pathlist[y] = x
             print('saved the path')
         elif pathlist.get(i):
