@@ -1,6 +1,5 @@
 import re
-import sys
-import os
+import speech_recognition as sr
 import json
 from lib import *
 from lib2 import *
@@ -19,31 +18,31 @@ data = {"who are teachers": "I simple say god",
         "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said"
         }
 funcdict = {
-    "find lowest common multiple":math_functions.LowestCommonMultiple,
-    "roll a dice":roll_a_dice,
-    "open file":open_file,
-    "subtract number":sub,
-    "toss a coin":toss,
-    "add numbers":add,
-    "search":search,
-    "give me some dumy text":dumy,
-    "dumy":dumy,
-    "help":helpx,
-    "find square":square,
-    "find square root":squareroot,
-    "time":date_time.time,
-    "date":date_time.date,
-    "encrypt":cryptography.encrypt,
-    "decrypt":cryptography.decrypt,
-    "find common factors":math_functions.commonfactors,
-    "find factors":math_functions.factors,
-    "isprime":math_functions.isPrime,
-    "find highest common factor":math_functions.highestCommonFactor,
-    "find multiples":math_functions.multiples,
-    "find nearest perfect square":math_functions.NearestPerfectSquare,
-    "is perfect square":math_functions.IsPerfectSquare,
-    "find lowest Form":math_functions.lowestForm,
-    "riddle":riddle
+    "find lowest common multiple": math_functions.LowestCommonMultiple,
+    "roll a dice": roll_a_dice,
+    "open file": open_file,
+    "subtract number": sub,
+    "toss a coin": toss,
+    "add numbers": add,
+    "search": search,
+    "give me some dumy text": dumy,
+    "dumy": dumy,
+    "help": helpx,
+    "find square": square,
+    "find square root": squareroot,
+    "time": date_time.time,
+    "date": date_time.date,
+    "encrypt": cryptography.encrypt,
+    "decrypt": cryptography.decrypt,
+    "find common factors": math_functions.commonfactors,
+    "find factors": math_functions.factors,
+    "isprime": math_functions.isPrime,
+    "find highest common factor": math_functions.highestCommonFactor,
+    "find multiples": math_functions.multiples,
+    "find nearest perfect square": math_functions.NearestPerfectSquare,
+    "is perfect square": math_functions.IsPerfectSquare,
+    "find lowest Form": math_functions.lowestForm,
+    "riddle": riddle
 }
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
@@ -52,22 +51,22 @@ print("Hi, I'm your friend you can ask me questions but not sure I can answer al
 print("If you are enough having fun with me say 'stop'  ")
 print("loading database")
 tdata = load_database()
-mainlist=[funcdict,data]
+mainlist = [funcdict, data]
 while True:
-    s = input("tell me your question plz.. ").lower().strip()
+    s = tell('say somthing')
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
-    if i== '':
+    if i == '':
         print("you didnt enter anything")
         continue
     status = False
     if i == "test 123":
-        for key,values in funcdict.items():
+        for key, values in funcdict.items():
             print(key)
             values()
     for data in mainlist:
-        if mainlist.index(data)==0:
+        if mainlist.index(data) == 0:
             if data.get(i):
                 data.get(i)()
                 status = True
@@ -78,30 +77,32 @@ while True:
         if tdata.get(i):
             print("one of your friend or you said the answer is :")
             print(tdata.get(i))
-            b = input("is it true?? type yes or no ").lower()
+            b = tell("is it true?? type yes or no ").lower()
             if b == "yes":
                 data[i] = tdata[i]
             elif b == "no":
-                string = input("what is the correct answer?:")
+                string = tell("what is the correct answer?:")
                 tdata[i] = string
             else:
-                print('sorry i dont understand but next time make sure you you only type "yes" or "no" ')
+                print(
+                    'sorry i dont understand but next time make sure you you only type "yes" or "no" ')
             print(choice(great)+" for your answer")
         else:
-            print("I dont know the answer can you help me!!, you can tell me the answer or say sorry")
-            a = input("help me with answer :")
+            print(
+                "I dont know the answer can you help me!!, you can tell me the answer or say sorry")
+            a = tell("help me with answer :")
             if a != "sorry":
                 print(choice(great))
                 tdata[i] = a
             else:
                 print("its ok")
-review = input("how was your experience?:")
+review = tell("how was your experience?:")
 path = find_database_path()
-with open(path,"r") as jsonFile:
+with open(path, "r") as jsonFile:
     data = json.load(jsonFile)
 data["user_review"].append(review)
-with open(path,"w") as jsonFile:
-    json.dump(data,jsonFile,indent=4)
+with open(path, "w") as jsonFile:
+    json.dump(data, jsonFile, indent=4)
 print("saving database")
 save_database(tdata)
 print(choice(great))
