@@ -7,7 +7,7 @@ import os
 import json
 import math
 
-help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin", "Subtract number", "Add numbers" , "find factorial",'riddle']
+help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin", "Subtract number", "Add numbers" , "find factorial",'riddle','open file']
 def find_database_path():
     relative_path = sys.argv[0]
     letter_list = [x for x in relative_path]
@@ -159,3 +159,23 @@ def riddle():
     print(questions[ran][2:])
     print(answers[ran][7:])
 
+ def open_file():
+    pathlist = {}
+    print('You can save file loction so thay you can open it later or open the saved files. Say "go back" to leav')
+    run = True
+    while run:
+        s = input(
+            'What you want to do?? You can say file name of what you want to open or tell "save" to save the file location: ')
+        i = re.sub("\s\s+", " ", s)
+        if i == 'go back':
+            run = False
+        if i == 'save':
+            x = input('what is the path of exe file: ')
+            y = input('what is the name of the application: ')
+            pathlist[y] = x
+            print('saved the path')
+        elif pathlist.get(i):
+            os.startfile(pathlist.get(i))
+
+        else:
+            print('file not found concider adding it to path')
