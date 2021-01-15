@@ -24,11 +24,13 @@
       },
       {
         "tag": "goodbye",
-        "patterns": ["Bye", "See you later", "Goodbye"],
+        "patterns": ["Bye", "See you later", "Goodbye","Good to see you","See you soon"],
         "responses": [
           "See you later, thanks for visiting",
           "Have a nice day",
-          "Bye! Come back again soon."
+          "Bye! Come back again soon.",
+          "Nice too meet you,too!",
+          "I have a nice time with you"
         ]
       },
       {
