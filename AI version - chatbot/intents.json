@@ -3,6 +3,8 @@
       {
         "tag": "greeting",
         "patterns": [
+          "What's up",
+          "how's going",
           "Hi",
           "Hey",
           "How are you",
@@ -11,6 +13,9 @@
           "Good day"
         ],
         "responses": [
+          "Yes",
+          "YO",
+          "fine",
           "Hey :-)",
           "Hello, thanks for visiting",
           "Hi there, what can I do for you?",
