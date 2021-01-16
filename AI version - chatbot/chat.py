@@ -5,7 +5,7 @@ import torch
 
 from model import NeuralNet
 from nltk_utils import bag, tokenize
-global query
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 with open('intents.json', 'r') as json_data:
@@ -32,9 +32,13 @@ while True:
     sentence = input("You: ")
     if sentence == "quit":
         break
-    elif sentence == b+query:
-        print(wikipidia.summary(query,sentence=10))
+    elif "Tell me about" or "tell me about" in sentence:
+        print("Do you wanna nkow about something")
         pass
+        if sentence =="Yes":
+            pass#i will do it later
+        
+  
 
     sentence = tokenize(sentence)
     X = bag(sentence, all_words)
