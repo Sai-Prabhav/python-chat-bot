@@ -1,4 +1,5 @@
 from datetime import *
+from lib import *
 import os
 class date_time:
     def time():
@@ -138,8 +139,8 @@ class cryptography:
 class math_functions:
     def commonfactors():
         print("enter two numbers to find its common factors")
-        number1 = int(input("enter first number:"))
-        number2 = int(input("enter second number:"))
+        number1 = int(tell("enter first number:"))
+        number2 = int(tell("enter second number:"))
         item_list = []
         item_list2 = []
         multiplication_list = []
@@ -185,7 +186,7 @@ class math_functions:
               common_factor_list.append(other[i])
         print(common_factor_list)
     def factors():
-        number = int(input("enter number to find its factors:"))
+        number = int(tell("enter number to find its factors:"))
         item_list = []
         multiplication_list = []
         factor_list = []
@@ -205,7 +206,7 @@ class math_functions:
                     pass
         print(factor_list)
     def isPrime():
-        number = int(input("enter number to find out whether it is a prime number or not:"))
+        number = int(tell("enter number to find out whether it is a prime number or not:"))
         item_list = []
         factor_list = []
         for i in range(number + 1):
@@ -227,8 +228,8 @@ class math_functions:
         else:
             print(False)
     def highestCommonFactor():
-        number1 = int(input("enter first number:"))
-        number2 = int(input("enter second number:"))
+        number1 = int(tell("enter first number:"))
+        number2 = int(tell("enter second number:"))
         item_list = []
         item_list2 = []
         multiplication_list = []
@@ -277,15 +278,15 @@ class math_functions:
         else:
             print(max(common_factor_list))
     def multiples():
-        number = int(input("enter number to find its multiples:"))
-        times = int(input("enter how much multiples to be printed:"))
+        number = int(tell("enter number to find its multiples:"))
+        times = int(tell("enter how much multiples to be printed:"))
         multiples = []
         for i in range(times):
             answer = number * i
             multiples.append(answer)
         print(multiples)
     def NearestPerfectSquare():
-        number = int(input("enter number to find out its nearest perfect square:"))
+        number = int(tell("enter number to find out its nearest perfect square:"))
         number = int(number)
         perfect_square_list = []
         nearest_perfect_square = []
@@ -321,7 +322,7 @@ class math_functions:
                 nearest_perfect_square.append(perfect_square_list[0])
         print(nearest_perfect_square)
     def IsPerfectSquare():
-        number = int(input("enter number to find out if its a perfect square or not:"))
+        number = int(tell("enter number to find out if its a perfect square or not:"))
         number = int(number)
         final = []
         for i in range(number):
@@ -336,8 +337,8 @@ class math_functions:
         else:
             print(True)
     def LowestCommonMultiple():
-        number1 = int(input("enter first number:"))
-        number2 = int(input("enter second number:"))
+        number1 = int(tell("enter first number:"))
+        number2 = int(tell("enter second number:"))
         number1 = int(number1)
         number2 = int(number2)
         if number1 >= number2:
@@ -368,8 +369,8 @@ class math_functions:
                     a += 1
         print(test_small_num)
     def lowestForm():
-        numerator = int(input("enter numerator:"))
-        denominator = int(input("enter denominator:"))
+        numerator = int(tell("enter numerator:"))
+        denominator = int(tell("enter denominator:"))
         final_nums = []
         if numerator > denominator:
             num = denominator
