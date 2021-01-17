@@ -6,16 +6,23 @@ import sys
 import os
 import json
 import math
+import pyttsx3
 import speech_recognition as sr
 help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin",
                 "Subtract number", "Add numbers", "find factorial", 'riddle', 'open file']
 
 
+def say(x):
+    engine = pyttsx3.init()
+    print(f'bot: {x}')
+    engine.say(x)
+    engine.runAndWait()
+
 def tell(a):
     r = sr.Recognizer()
     with sr.Microphone() as scro:
         sleep(0.2)
-        print(f'bot: {a}')
+        say(a)
         adio = r.listen(scro)
         ans = r.recognize_google(adio)
         print(f'you: {ans}')
@@ -65,19 +72,19 @@ def square():
     n = int(tell("What number you want to square:"))
     if n == '':
         n = 0
-    print(n*n)
+    say(n*n)
 
 
 def squareroot():
     x = int(tell("What number you want to find square root of:"))
     if x == '':
         x = 0
-    print(math.sqrt(x))
+    say(math.sqrt(x))
 
 
 def helpx():
     for item in help_options:
-        print(item)
+        say(item)
 
 
 def save_database(data):
@@ -92,7 +99,7 @@ def save_database(data):
 def search():
     name = tell("what you want to search: ")
     if name == '':
-        print("you didnt enter anything..")
+        say("you didnt enter anything..")
     else:
         URL = "https://en.wikipedia.org/wiki/"+name
         heders = {
@@ -100,8 +107,8 @@ def search():
         page = requests.get(URL, heders)
         soup = BeautifulSoup(page.content, 'html.parser')
         title = soup.findAll("p")
-        print(title[2].text)
-        print(title[3].text)
+        say(title[2].text)
+        say(title[3].text)
 
 
 def fact(n):
@@ -111,21 +118,21 @@ def fact(n):
 
 
 def roll_a_dice():
-    print("your number is ", end="", flush=True)
+    say("your number is ", end="", flush=True)
     sleep(1)
-    print(".", end="", flush=True)
+    say(".", end="", flush=True)
     sleep(1)
-    print(".", end="",  flush=True)
+    say(".", end="",  flush=True)
     sleep(1)
-    print(".", end="", flush=True)
+    say(".", end="", flush=True)
     sleep(1)
-    print(randint(1, 6))
+    say(randint(1, 6))
 
 
 def sub():
     n1 = int(tell("give me first number: "))
     n2 = int(tell("give me second number: "))
-    print(n1-n2)
+    say(n1-n2)
 
 
 def add():
@@ -134,11 +141,11 @@ def add():
     for i in range(n):
         x = int(tell('your number:'))
         y += x
-    print(y)
+    say(y)
 
 
 def toss():
-    print(choice(["Heads", "Tails"]))
+    say(choice(["Heads", "Tails"]))
 
 
 def dumy():
@@ -150,7 +157,7 @@ def dumy():
     soup = BeautifulSoup(page.content, 'html.parser')
     title = soup.findAll("p")
     for i in range(numP):
-        print(title[i].text)
+        say(title[i].text)
 
 
 def dumytext():
@@ -163,13 +170,13 @@ def dumytext():
         for i in range(numletters):
             cl = choice(x)
             word = word+cl
-    print(word, end=' ')
+    say(word, end=' ')
 
 
 def sayhi():
     hi = ["hi", "hey", "hello", "hope you are good", "how are you ", "how is your day", "hi there",
           "hello!", "I'm good!", "fine! how about you ?", "hello friend", "hope you are good too!"]
-    print(randon.choice(hi))
+    say(randon.choice(hi))
 
 
 def riddle():
@@ -194,13 +201,13 @@ def riddle():
             if em[6] == ':':
                 answers.append(em)
     ran = choice(range(len(answers)))
-    print(questions[ran][2:])
-    print(answers[ran][7:])
+    say(questions[ran][2:])
+    say(answers[ran][7:])
 
 
 def open_file():
     pathlist = {}
-    print('You can save file loction so thay you can open it later or open the saved files. Say "go back" to leav')
+    say('You can save file loction so thay you can open it later or open the saved files. Say "go back" to leav')
     run = True
     while run:
         s = tell(
@@ -212,9 +219,9 @@ def open_file():
             x = tell('what is the path of exe file: ')
             y = tell('what is the name of the application: ')
             pathlist[y] = x
-            print('saved the path')
+            say('saved the path')
         elif pathlist.get(i):
             os.startfile(pathlist.get(i))
 
         else:
-            print('file not found concider adding it to path')
+            say('file not found concider adding it to path')

@@ -30,7 +30,7 @@ class date_time:
             current_hours -= 12
         elif int(hours) == 0:
             current_hours += 12
-        print(str(current_hours)+":"+str(minutes)+":"+str(seconds)+" "+mode)
+        say(str(current_hours)+":"+str(minutes)+":"+str(seconds)+" "+mode)
     def date():
         today = datetime.today()
         date = today.strftime("%d")
@@ -57,7 +57,7 @@ class date_time:
         month_conv = {"01":"January","02":"February","03":"March","04":"April","05":"May","06":"June","07":"July","08":"August","09":"September","10":"October","11":"November","12":"December"}
         month_d = month_conv.get(month)
         year_d = "20"+str(year)
-        print(date+date_m+" "+month_d+" "+year_d)
+        say(date+date_m+" "+month_d+" "+year_d)
 class cryptography:
     def encrypt():
         string = input("enter string to be encrypted:")
@@ -69,11 +69,11 @@ class cryptography:
                 a = encryption_algorithm.get(letter)
                 encrypted_string.append(a)
             else:
-                print("something else happened")
+                say("something else happened")
         encrypted_word = ""
         for letter in encrypted_string:
             encrypted_word += str(letter)
-        print("encrypted message - ",encrypted_word)
+        say("encrypted message - ",encrypted_word)
     def decrypt():
         string = input("enter string to be decrypted:")
         encryption_algorithm = {"a":"9n","b":"Vp","c":"rg","d":"3r","e":"8v","f":"oV","g":"6n","h":"mT","i":"Er","j":"Vq","k":"gG","l":"nG","m":"Z7","n":"nD","o":"Z0","p":"9w","q":"T6","r":"cP","s":"e0","t":"w2","u":"Mf","v":"j7","w":"8Y","x":"3n","y":"7f","z":"Tp","1":"ln","2":"zR","3":"47","4":"3y","5":"iQ","6":"r0","7":"vf","8":"ji","9":"IS","0":"fq","A":"qX","B":"pk","C":"4a","D":"JG","E":"Sz","F":"n3","G":"gr","H":"Xp","I":"6b","J":"dL","K":"3b","L":"DR","M":"0q","N":"i0","O":"0c","P":"Kq","Q":"mz","R":"E1","S":"vG","T":"pF","U":"wr","V":"2e","W":"Xv","X":"Dt","Y":"4Y","Z":"8f"," ":"tg",",":"er",";":"gr","[":"%H","]":"ui","{":"fr","}":"&H","|":"!#",":":"6y","/":"7u","?":"34",">":"r4","<":"t3","!":"GY","@":"fH","#":")j","$":"i9","%":"^G","^":"{J","&":"HU","*":"G3","(":"$J",")":"*j","~":"$r",".":"tt","=":"th","-":"4h","_":"ht","+":"3z"}
@@ -86,7 +86,7 @@ class cryptography:
             letter_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","@","#","$","%","^","&","*","(",")",".","_","-","+","=","{","}","[","]","(",")",":",";","<",",",">","/","?","~"," "]
             for letter in string:
                 if letter not in letter_list:
-                    print("invalid string: "+letter)
+                    say("invalid string: "+letter)
                 else:
                     while iterator != length:
                         index = iterator + 1
@@ -99,7 +99,7 @@ class cryptography:
             for item in decode_list:
                 inventory = decoder_algorithm.get(item)
                 decrypted_message += inventory
-            print("decrypted message - ",decrypted_message)
+            say("decrypted message - ",decrypted_message)
     def findsize(bytesc):
         def strip(bytesc):
             bytesc = str(bytesc)
@@ -138,7 +138,7 @@ class cryptography:
         return str(bytesc)+" "+state
 class math_functions:
     def commonfactors():
-        print("enter two numbers to find its common factors")
+        say("enter two numbers to find its common factors")
         number1 = int(tell("enter first number:"))
         number2 = int(tell("enter second number:"))
         item_list = []
@@ -184,7 +184,7 @@ class math_functions:
         for i in range(len(other)):
            if main.count(other[i]) != 0:
               common_factor_list.append(other[i])
-        print(common_factor_list)
+        say(common_factor_list)
     def factors():
         number = int(tell("enter number to find its factors:"))
         item_list = []
@@ -204,7 +204,7 @@ class math_functions:
                     factor_list.append(item_list[a])
                 else:
                     pass
-        print(factor_list)
+        say(factor_list)
     def isPrime():
         number = int(tell("enter number to find out whether it is a prime number or not:"))
         item_list = []
@@ -222,11 +222,11 @@ class math_functions:
                     factor_list.append(item_list[a])
                 else:
                     pass
-        print("the factors of "+str(number)+" are: "+str(factor_list))
+        say("the factors of "+str(number)+" are: "+str(factor_list))
         if len(factor_list) == 2:
-            print(True)
+            say(True)
         else:
-            print(False)
+            say(False)
     def highestCommonFactor():
         number1 = int(tell("enter first number:"))
         number2 = int(tell("enter second number:"))
@@ -274,17 +274,17 @@ class math_functions:
            if main.count(other[i]) != 0:
               common_factor_list.append(other[i])
         if len(common_factor_list) == 1:
-           print(common_factor_list[0])
+           say(common_factor_list[0])
         else:
-            print(max(common_factor_list))
+            say(max(common_factor_list))
     def multiples():
         number = int(tell("enter number to find its multiples:"))
-        times = int(tell("enter how much multiples to be printed:"))
+        times = int(tell("enter how much multiples to be sayed:"))
         multiples = []
         for i in range(times):
             answer = number * i
             multiples.append(answer)
-        print(multiples)
+        say(multiples)
     def NearestPerfectSquare():
         number = int(tell("enter number to find out its nearest perfect square:"))
         number = int(number)
@@ -320,7 +320,7 @@ class math_functions:
                 nearest_perfect_square.append(perfect_square_list[1])
             else:
                 nearest_perfect_square.append(perfect_square_list[0])
-        print(nearest_perfect_square)
+        say(nearest_perfect_square)
     def IsPerfectSquare():
         number = int(tell("enter number to find out if its a perfect square or not:"))
         number = int(number)
@@ -333,9 +333,9 @@ class math_functions:
                 final.append(str(number)+" is not perfect square")
                 break
         if len(final) == 0:
-           print(False)
+           say(False)
         else:
-            print(True)
+            say(True)
     def LowestCommonMultiple():
         number1 = int(tell("enter first number:"))
         number2 = int(tell("enter second number:"))
@@ -367,7 +367,7 @@ class math_functions:
                 while test_small_num > test_big_num:
                     test_big_num = big_num * a
                     a += 1
-        print(test_small_num)
+        say(test_small_num)
     def lowestForm():
         numerator = int(tell("enter numerator:"))
         denominator = int(tell("enter denominator:"))
@@ -392,9 +392,9 @@ class math_functions:
                     else:
                         pass
         if len(final_nums) == 0:
-            print([numerator,denominator])
+            say([numerator,denominator])
         else:
-            print([final_nums[-2],final_nums[-1]])
+            say([final_nums[-2],final_nums[-1]])
     def findsize(bytesc):
         def strip(bytesc):
             bytesc = str(bytesc)

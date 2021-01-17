@@ -47,23 +47,24 @@ funcdict = {
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
 
-print("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
-print("If you are enough having fun with me say 'stop'  ")
-print("loading database")
+say("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
+say("If you are enough having fun with me say 'stop'  ")
+say("loading database")
 tdata = load_database()
 mainlist = [funcdict, data]
+say('hellow who are you')
 while True:
     s = tell('say somthing')
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
     if i == '':
-        print("you didnt enter anything")
+        say("you didnt enter anything")
         continue
     status = False
     if i == "test":
         for key, values in funcdict.items():
-            print(key)
+            say(key)
             values()
     for data in mainlist:
         if mainlist.index(data) == 0:
@@ -71,12 +72,12 @@ while True:
                 data.get(i)()
                 status = True
         elif data.get(i):
-            print(data.get(i))
+            say(data.get(i))
             status = True
     if status == False:
         if tdata.get(i):
-            print("one of your friend or you said the answer is :")
-            print(tdata.get(i))
+            say("one of your friend or you said the answer is :")
+            say(tdata.get(i))
             b = tell("is it true?? type yes or no ").lower()
             if b == "yes":
                 data[i] = tdata[i]
@@ -84,18 +85,18 @@ while True:
                 string = tell("what is the correct answer?:")
                 tdata[i] = string
             else:
-                print(
+                say(
                     'sorry i dont understand but next time make sure you you only type "yes" or "no" ')
-            print(choice(great)+" for your answer")
+            say(choice(great)+" for your answer")
         else:
-            print(
+            say(
                 "I dont know the answer can you help me!!, you can tell me the answer or say sorry")
             a = tell("help me with answer :")
             if a != "sorry":
-                print(choice(great))
+                say(choice(great))
                 tdata[i] = a
             else:
-                print("its ok")
+                say("its ok")
 review = tell("how was your experience?:")
 path = find_database_path()
 with open(path, "r") as jsonFile:
@@ -103,6 +104,6 @@ with open(path, "r") as jsonFile:
 data["user_review"].append(review)
 with open(path, "w") as jsonFile:
     json.dump(data, jsonFile, indent=4)
-print("saving database")
+say("saving database")
 save_database(tdata)
-print(choice(great))
+say(choice(great))
