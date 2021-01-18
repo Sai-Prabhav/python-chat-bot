@@ -42,17 +42,18 @@ funcdict = {
     "find nearest perfect square": math_functions.NearestPerfectSquare,
     "is perfect square": math_functions.IsPerfectSquare,
     "find lowest Form": math_functions.lowestForm,
-    "riddle": riddle
+    "riddle": riddle,
+    "read": read_this
 }
 great = ["Thankyou", "So nice of you", "I appreciate for your help", "thank you very much",
          "I thank you from the bottom of my heart. Yes, I do have it", "accept my endless gratitude", "thanks a lot"]
 
 say("Hi, I'm your friend you can ask me questions but not sure I can answer all ")
 say("If you are enough having fun with me say 'stop'  ")
-say("loading database")
+print("loading database")
 tdata = load_database()
 mainlist = [funcdict, data]
-say('hellow who are you')
+
 while True:
     s = tell('say somthing')
     i = re.sub("\s\s+", " ", s)
@@ -73,21 +74,13 @@ while True:
                 status = True
         elif data.get(i):
             say(data.get(i))
+            data.get(i)()
             status = True
     if status == False:
         if tdata.get(i):
-            say("one of your friend or you said the answer is :")
+
             say(tdata.get(i))
-            b = tell("is it true?? type yes or no ").lower()
-            if b == "yes":
-                data[i] = tdata[i]
-            elif b == "no":
-                string = tell("what is the correct answer?:")
-                tdata[i] = string
-            else:
-                say(
-                    'sorry i dont understand but next time make sure you you only type "yes" or "no" ')
-            say(choice(great)+" for your answer")
+
         else:
             say(
                 "I dont know the answer can you help me!!, you can tell me the answer or say sorry")
@@ -95,6 +88,7 @@ while True:
             if a != "sorry":
                 say(choice(great))
                 tdata[i] = a
+                save_database(tdata)
             else:
                 say("its ok")
 review = tell("how was your experience?:")

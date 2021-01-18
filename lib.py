@@ -12,9 +12,10 @@ help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin",
                 "Subtract number", "Add numbers", "find factorial", 'riddle', 'open file']
 
 
-def say(x):
+def say(x,ifprint=True):
     engine = pyttsx3.init()
-    print(f'bot: {x}')
+    if ifprint:
+        print(f'bot: {x}')
     engine.say(x)
     engine.runAndWait()
 
@@ -27,7 +28,11 @@ def tell(a):
         ans = r.recognize_google(adio)
         print(f'you: {ans}')
         return ans
-
+def read_this():
+    text="dummy_text"
+    while not(text==''):
+        text=input()
+        say(text,ifprint=False)
 
 def find_database_path():
     relative_path = sys.argv[0]
