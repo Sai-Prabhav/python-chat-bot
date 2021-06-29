@@ -2,7 +2,13 @@
     "tdata": {
         "hed": "hed",
         "hi": "hi",
-        "hellow": "hellow"
+        "hellow": "hellow",
+        "who are u": "i am a chat bot",
+        "hello": "hello",
+        "how are u": "i am fine hope u are too",
+        "who are u ": "s"
     },
-    "user_review": []
+    "user_review": [
+        "good"
+    ]
 }
