@@ -184,7 +184,7 @@ def dumytext():
 def sayhi():
     hi = ["hi", "hey", "hello", "hope you are good", "how are you ", "how is your day", "hi there",
           "hello!", "I'm good!", "fine! how about you ?", "hello friend", "hope you are good too!"]
-    say(randon.choice(hi))
+    say(choice(hi))
 
 
 def riddle():
