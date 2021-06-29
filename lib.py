@@ -7,32 +7,43 @@ import os
 import json
 import math
 import pyttsx3
+import re
 import speech_recognition as sr
 help_options = ["Answer few of your questions.", "Roll a dice.", "Toss a coin",
-                "Subtract number", "Add numbers", "find factorial", 'riddle', 'open file']
+                "Subtract number", "Add numbers", "find factorial", 'riddle', 'open file',"speak","stop speaking"]
 
 
-def say(x,ifprint=True):
-    engine = pyttsx3.init()
+tell = False
+
+
+def startSpeak():
+    global tell
+    tell = True
+
+
+def stopSpeak():
+    global tell
+    tell = False
+
+def say(x, ifprint=True):
     if ifprint:
         print(f'bot: {x}')
-    engine.say(x)
-    engine.runAndWait()
+    if tell:
+        engine = pyttsx3.init()
+        engine.say(x)
+        engine.runAndWait()
 
-def tell(a):
-    r = sr.Recognizer()
-    with sr.Microphone() as scro:
-        sleep(0.2)
-        say(a)
-        adio = r.listen(scro)
-        ans = r.recognize_google(adio)
-        print(f'you: {ans}')
-        return ans
+
+def ask(a):
+    return input(F"bot: {a} \nyou:")
+
+
 def read_this():
-    text="dummy_text"
-    while not(text==''):
-        text=input()
-        say(text,ifprint=False)
+    text = "dummy_text"
+    while not(text == ''):
+        text = input()
+        say(text, ifprint=False)
+
 
 def find_database_path():
     relative_path = sys.argv[0]
@@ -74,14 +85,14 @@ def load_database():
 
 
 def square():
-    n = int(tell("What number you want to square:"))
+    n = int(ask("What number you want to square:"))
     if n == '':
         n = 0
     say(n*n)
 
 
 def squareroot():
-    x = int(tell("What number you want to find square root of:"))
+    x = int(ask("What number you want to find square root of:"))
     if x == '':
         x = 0
     say(math.sqrt(x))
@@ -102,7 +113,7 @@ def save_database(data):
 
 
 def search():
-    name = tell("what you want to search: ")
+    name = ask("what you want to search: ")
     if name == '':
         say("you didnt enter anything..")
     else:
@@ -123,28 +134,20 @@ def fact(n):
 
 
 def roll_a_dice():
-    say("your number is ", end="", flush=True)
-    sleep(1)
-    say(".", end="", flush=True)
-    sleep(1)
-    say(".", end="",  flush=True)
-    sleep(1)
-    say(".", end="", flush=True)
-    sleep(1)
-    say(randint(1, 6))
+    say(f"your number is {randint(1, 6)}")
 
 
 def sub():
-    n1 = int(tell("give me first number: "))
-    n2 = int(tell("give me second number: "))
+    n1 = int(ask("give me first number: "))
+    n2 = int(ask("give me second number: "))
     say(n1-n2)
 
 
 def add():
-    n = int(tell("who many numbers do you want add: "))
+    n = int(ask("who many numbers do you want add: "))
     y = 0
     for i in range(n):
-        x = int(tell('your number:'))
+        x = int(ask('your number:'))
         y += x
     say(y)
 
@@ -154,7 +157,7 @@ def toss():
 
 
 def dumy():
-    numP = int(tell("who many paras you want: "))
+    numP = int(ask("who many paras you want: "))
     URL = "https://www.lipsum.com/feed/html"
     heders = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 OPR/72.0.3815.211"}
@@ -166,7 +169,7 @@ def dumy():
 
 
 def dumytext():
-    numwords = int(tell('num words you want:'))
+    numwords = int(ask('num words you want:'))
     for i in range(numwords):
         numletters = randint(2, 6)
         x = ["q", "w", "e", "r", "t", "y", 'u', 'i', 'o', 'p', 'a', 's', 'd',
@@ -215,14 +218,14 @@ def open_file():
     say('You can save file loction so thay you can open it later or open the saved files. Say "go back" to leav')
     run = True
     while run:
-        s = tell(
-            'What you want to do?? You can say file name of what you want to open or tell "save" to save the file location: ')
+        s = ask(
+            'What you want to do?? You can say file name of what you want to open or ask "save" to save the file location: ')
         i = re.sub("\s\s+", " ", s)
         if i == 'go back':
             run = False
         if i == 'save':
-            x = tell('what is the path of exe file: ')
-            y = tell('what is the name of the application: ')
+            x = ask('what is the path of exe file: ')
+            y = ask('what is the name of the application: ')
             pathlist[y] = x
             say('saved the path')
         elif pathlist.get(i):

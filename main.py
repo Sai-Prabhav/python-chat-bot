@@ -1,5 +1,4 @@
 import re
-import speech_recognition as sr
 import json
 from lib import *
 from lib2 import *
@@ -18,6 +17,8 @@ data = {"who are teachers": "I simple say god",
         "who started teachers day in india": "Dr Sarvepalli Radhakrishnan said 'Instead of celebrating my birthday, it would be my proud privilege if September 5 is observed as Teachers Day' he said"
         }
 funcdict = {
+    "stop speaking":stopSpeak,
+    "speak":startSpeak,
     "find lowest common multiple": math_functions.LowestCommonMultiple,
     "roll a dice": roll_a_dice,
     "open file": open_file,
@@ -55,7 +56,7 @@ tdata = load_database()
 mainlist = [funcdict, data]
 
 while True:
-    s = tell('say somthing')
+    s = ask('say somthing')
     i = re.sub("\s\s+", " ", s)
     if i == "stop" or i == "s":
         break
@@ -83,15 +84,15 @@ while True:
 
         else:
             say(
-                "I dont know the answer can you help me!!, you can tell me the answer or say sorry")
-            a = tell("help me with answer :")
-            if a != "sorry":
+                "I dont know the answer can you help me!!, you can ask me the answer or say sorry")
+            a = ask("help me with answer :")
+            if not(a  in ["sorry","s","no"]) :
                 say(choice(great))
                 tdata[i] = a
                 save_database(tdata)
             else:
                 say("its ok")
-review = tell("how was your experience?:")
+review = ask("how was your experience?:")
 path = find_database_path()
 with open(path, "r") as jsonFile:
     data = json.load(jsonFile)
