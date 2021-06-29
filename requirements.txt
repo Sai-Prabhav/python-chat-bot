@@ -1,5 +1,4 @@
 requests
 bs4
-pytorch
-nltk
 pyttsx3
+speech_recognition
